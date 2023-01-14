@@ -282,3 +282,32 @@ button.export-pdf::before {
     opacity: 0; /* Make the overlay transparent */
     transition: all 3s ease-in-out;
 }
+
+button.warning-sort {
+    position: relative; /* add this to make the overlay appear on top of the button */
+}
+
+/* Show a warning overlay when the button is hovered */
+button.warning-sort:hover::before {
+    content: "Early development! (This breaks the deleting of saved notes)"; /* Add warning message */
+    position: absolute; /* Position the overlay on top of the button */
+    top: 50%; /* Center it vertically */
+    left: 50%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Position the overlay at the center of the button */
+    background-color: rgba(255, 0, 0, 0.8); /* Use a semi-transparent red background */
+    color: white; /* Use white text */
+    padding: 10px; /* Add some padding */
+    border-radius: 10px; /* Add rounded corners */
+    font-size: 14px; /* Adjust the font size */
+    visibility: visible; /* Make the overlay visible */
+    opacity: 1; /* Make the overlay opaque */
+    transition: all 3s ease-in-out; /* Add a smooth transition */
+    width: 100px;
+}
+
+/* Hide the overlay when the button is not hovered */
+button.warning-sort::before {
+    visibility: hidden; /* Make the overlay hidden */
+    opacity: 0; /* Make the overlay transparent */
+    transition: all 3s ease-in-out;
+}

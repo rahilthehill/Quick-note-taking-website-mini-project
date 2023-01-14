@@ -58,8 +58,9 @@ function saveNote() {
   // Update the saved notes section
   displayNotes();
   console.log(savedNote.text)
+
 }
-  
+
 }
 
 function displayNotes() {
@@ -228,3 +229,18 @@ document.getElementById("export-pdf-button").addEventListener("mouseover", funct
     this.classList.remove("hover");
   });
   
+  function reverseNotes() {
+    
+    var savedNotes = document.getElementsByClassName("saved-note");
+    
+    savedNotes = [].slice.call(savedNotes); // convert HTMLCollection to Array
+    savedNotes.reverse(); // reverse the order of the array
+    
+    var savedNotesContainer = document.getElementsByClassName("saved-notes")[0];
+    
+    savedNotes.forEach(function(note) {
+      savedNotesContainer.appendChild(note);
+    });
+    
+    }
+
