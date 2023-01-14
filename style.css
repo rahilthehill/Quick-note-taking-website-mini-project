@@ -29,7 +29,7 @@ textarea {
 
 /* Style the save button */
 button {
-  background-color: #4caf50;
+  background-color: #000;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -38,6 +38,7 @@ button {
   margin-top: 10px;
   transition: all 0.5s ease-in-out;
 }
+
 
 button:hover {
   animation: save-animation 0.5s infinite alternate ease-in-out;
@@ -219,4 +220,65 @@ button:hover {
 /* Add a "show" class to the overlay when the button is clicked */
 .overlay.show {
   display: block;
+}
+
+#updates-section {
+    position: absolute;
+    left: 0;
+    top: 7.5vh;
+    width: 20vw;
+    height: fit-content;
+    background-color: #f8f8f8;
+    overflow: auto;
+    display: block;
+    border: 2px solid #d9d9d9;
+    border-radius: 16px;
+    padding: 11px;
+    margin: 11px;
+    line-height: 27px;
+  }
+  
+
+  .save {
+    position: absolute;
+    top: 73.5vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: all-scroll;
+    font-size: 95%;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Style the export PDF button */
+button.export-pdf {
+    position: relative; /* add this to make the overlay appear on top of the button */
+}
+
+/* Show a warning overlay when the button is hovered */
+button.export-pdf:hover::before {
+    content: "Early development warning"; /* Add warning message */
+    position: absolute; /* Position the overlay on top of the button */
+    top: 50%; /* Center it vertically */
+    left: 50%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Position the overlay at the center of the button */
+    background-color: rgba(255, 0, 0, 0.8); /* Use a semi-transparent red background */
+    color: white; /* Use white text */
+    padding: 10px; /* Add some padding */
+    border-radius: 10px; /* Add rounded corners */
+    font-size: 14px; /* Adjust the font size */
+    visibility: visible; /* Make the overlay visible */
+    opacity: 1; /* Make the overlay opaque */
+    transition: all 3s ease-in-out; /* Add a smooth transition */
+}
+
+/* Hide the overlay when the button is not hovered */
+button.export-pdf::before {
+    visibility: hidden; /* Make the overlay hidden */
+    opacity: 0; /* Make the overlay transparent */
+    transition: all 3s ease-in-out;
 }

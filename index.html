@@ -5,6 +5,8 @@
 <head>
     <title>Rahilj's Notetaking App!</title>
 </head>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+
 
 <body>
     <div class="title" id="titleWeb">Quick Notes WebApp!
@@ -13,11 +15,13 @@
     
     <div class="container">
         <textarea id="note-text"></textarea>
-        <button onclick="saveNote()">Save</button>
-        <button onclick="changeFont()" id="font-button"> Change Font: </button>
-        <button onclick="generatePDF()">Export PDF</button>
+        <div onclick="saveNote()" class="save">Save note!</div>
+        <button onclick="changeFont()" id="font-button"> Toggle Fonts: </button>
+        <button class="export-pdf" onclick="generatePDF()">⚠️ Export PDF</button>
         <button id="development-btn">Development</button>
+        <button id="updates-btn">Toggle Updates</button>
     </div>
+    
     <div id="development-overlay" class="overlay">
         <div class="overlay-content">
           <h2>ℹ️ About!</h2>
@@ -30,6 +34,19 @@
         </div>
       </div>
     </div>
+    
+    <div id="updates-section">
+        <h2>Updates - Current Version: 1.5 </h2>
+        <ul>
+          <li>Version 1.0 - Initial Release</li>
+          <li>Version 1.1 - Font-Change feature update</li>
+          <li>Version 1.2 - Export PDF jsPDF feature intergration</li>
+          <li>Version 1.3 - Development/About overlay added</li>
+          <li>Version 1.4 - Initial @media-query mobile support</li>
+          <li>Version 1.5 - Added source code link</li>
+        </ul>
+      </div>
+    
     <div class="saved-notes">
         <h2>Saved Notes:</h2>
         <div id="saved"></div>

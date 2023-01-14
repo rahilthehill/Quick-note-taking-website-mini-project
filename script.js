@@ -176,3 +176,55 @@ function generatePDF() {
   closeOverlayBtn.addEventListener("click", function() {
     developmentOverlay.classList.remove("show");
   });
+
+  const updatesList = document.querySelector('.updates-list');
+
+const updates = [
+    { date: 'Jan 14, 2022', version: '1.0', notes: 'Initial release of the website' },
+    { date: 'Feb 15, 2022', version: '1.1', notes: 'Added PDF export feature' },
+    { date: 'Mar 20, 2022', version: '1.2', notes: 'Improved mobile responsiveness' }
+];
+
+const updatesBtn = document.getElementById("updates-btn");
+const updatesSection = document.getElementById("updates-section");
+
+function toggleUpdates() {
+  if (updatesSection.style.display === "block") {
+    updatesSection.style.display = "none";
+  } else {
+    updatesSection.style.display = "block";
+  }
+}
+
+updatesBtn.addEventListener("click", toggleUpdates);
+
+let emojiArray = ["📑", "📝", "📓", "📄"];
+let currentEmojiIndex = 0;
+let iconLink = document.querySelector("link[rel='icon']");
+
+// setInterval(() => {
+//     currentEmojiIndex++;
+//     if (currentEmojiIndex >= emojiArray.length) {
+//         currentEmojiIndex = 0;
+//     }
+//     iconLink.href = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>" + emojiArray[currentEmojiIndex] + "</text></svg>";
+// }, 2500);
+
+
+document.addEventListener("keydown", changePerType);
+
+function changePerType() {
+    currentEmojiIndex++;
+    if (currentEmojiIndex >= emojiArray.length) {
+        currentEmojiIndex = 0;
+    }
+    iconLink.href = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>" + emojiArray[currentEmojiIndex] + "</text></svg>";
+}
+
+document.getElementById("export-pdf-button").addEventListener("mouseover", function(){
+    this.classList.add("hover");
+  });
+  document.getElementById("export-pdf-button").addEventListener("mouseout", function(){
+    this.classList.remove("hover");
+  });
+  
