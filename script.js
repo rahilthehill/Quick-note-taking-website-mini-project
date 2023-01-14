@@ -244,3 +244,17 @@ document.getElementById("export-pdf-button").addEventListener("mouseover", funct
     
     }
 
+    $(document).ready(function(){
+        $("textarea").val("Enter note here...");
+        $("textarea").focus(function(){
+            if($(this).val() == "Enter note here..."){
+                $(this).val("");
+            }
+        });
+        $("textarea").blur(function(){
+            if($(this).val() == ""){
+                $(this).val("Enter note here...");
+            }
+        });
+    });
+    
