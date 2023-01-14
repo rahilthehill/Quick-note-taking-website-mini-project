@@ -130,10 +130,32 @@ font-size: 16px;
 }
 
 .title {
-      font-size: 5vh;
-        text-align: center;
-     border: 2px #bfb9b9 solid;
-    font-family: Arial, sans-serif;
+    font-size: 5vh;
+    text-align: center;
+    border: 2px #bfb9b9 solid;
+    font-family: Georgia;
+    position: relative;
+}
+
+.github-button {
+    position: absolute;
+    right: 1%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 21px;
+    text-decoration: none;
+    font-size: 2vh;
 }
 
   
+@keyframes fadeOut {
+    0% {
+    background-color: red;
+    }
+    100% {
+    background-color: white;
+    }
+    }

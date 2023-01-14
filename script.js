@@ -1,8 +1,7 @@
-
 // Initialize an array to store the saved notes
 let emojis = ["📝", "💭", "📓", "📄", "🗒"];
 let savedNotes = [];
-let fontIndex = 0;
+let fontIndex = 1;
 let fonts = [
   "Arial, sans-serif",
   "Comic Sans MS, cursive, sans-serif",
@@ -12,46 +11,56 @@ let fonts = [
 ];
 
 function changeFont() {
-    let titleWeb = document.querySelector("#titleWeb");
-    titleWeb.style.fontFamily = fonts[fontIndex];
+  let titleWeb = document.querySelector("#titleWeb");
+  titleWeb.style.fontFamily = fonts[fontIndex];
 
-    let body = document.querySelector("body");
-    let textarea = document.querySelector("textarea");
-    body.style.fontFamily = fonts[fontIndex];
-    textarea.style.fontFamily = fonts[fontIndex];
-    let fontButton = document.querySelector("#font-button");
-    fontButton.innerHTML = "Change Font " + (fontIndex + 1);
-    
-    fontIndex = (fontIndex + 1) % fonts.length;
-    
-  }
+  let body = document.querySelector("body");
+  let textarea = document.querySelector("textarea");
+  body.style.fontFamily = fonts[fontIndex];
+  textarea.style.fontFamily = fonts[fontIndex];
+  let fontButton = document.querySelector("#font-button");
+  fontButton.innerHTML = "Change Font " + (fontIndex + 1);
+
+  fontIndex = (fontIndex + 1) % fonts.length;
+}
 
 function saveNote() {
-    // Get the text from the text area
-    let noteText = document.getElementById("note-text").value;
-    // Get the current date and time
-    let timeStamp = new Date().toLocaleString();
-    // Create a new object for the saved note
-    let savedNote = {
-      text: noteText,
-      timeStamp: timeStamp,
-      emoji: emojis[Math.floor(Math.random() * emojis.length)],
-    };
-    // Add the note to the array of saved notes
-    savedNotes.push(savedNote);
-    // Clear the text area
-    document.getElementById("note-text").value = "";
-    // Flash the text area as a save indicator
-    document.getElementById("note-text").style.animation =
-      "flash 0.5s ease-in-out";
-    setTimeout(function () {
-      document.getElementById("note-text").style.animation = "";
-    }, 500);
-    // Update the saved notes section
-    displayNotes();
-  }
+  // Get the text from the text area
+  let noteText = document.getElementById("note-text").value;
+  // Get the current date and time
+  let timeStamp = new Date().toLocaleString();
+  // Create a new object for the saved note
+  let savedNote = {
+    text: noteText,
+    timeStamp: timeStamp,
+    emoji: emojis[Math.floor(Math.random() * emojis.length)],
+  };
 
+  if (savedNote.text === '') {
 
+    document.getElementById("note-text").style.backgroundColor = "red";
+    setTimeout(function(){
+       document.getElementById("note-text").style.transition = "background-color 2s ease-in-out";
+       document.getElementById("note-text").style.backgroundColor = "white";
+    }, 1000);
+
+  } else {
+  // Add the note to the array of saved notes
+  savedNotes.push(savedNote);
+  // Clear the text area
+  document.getElementById("note-text").value = "";
+  // Flash the text area as a save indicator
+  document.getElementById("note-text").style.animation =
+    "flash 0.5s ease-in-out";
+  setTimeout(function () {
+    document.getElementById("note-text").style.animation = "";
+  }, 500);
+  // Update the saved notes section
+  displayNotes();
+  console.log(savedNote.text)
+}
+  
+}
 
 function displayNotes() {
   // Get the saved notes container
@@ -95,33 +104,59 @@ function displayNotes() {
   }
 }
 
+// function generatePDF() {
+//     let doc = new window.jsPDF();
+//     let y = 20;
+//     doc.setFont("Courier");
+//     doc.setFontSize(15);
+//     doc.text("SAVED NOTES!", 105, y, 'center');
+//     y += 20;
+//     // loop through the saved notes
+//     savedNotes.forEach(function(note,index) {
+//         doc.setFont("Courier");
+//         doc.setFontSize(16);
+//         doc.text(`${index+1}. `, 15, y);
+//         doc.text(note.text, 30, y);
+//         y += 20;
+//         doc.line(15, y, 195, y);
+//         y += 10;
+//     });
+//     doc.save("saved-notes.pdf");
+// }
+
 function generatePDF() {
-    let doc = new window.jsPDF();
-    let y = 20;
+  let doc = new window.jsPDF();
+  let y = 20;
+  doc.setFont("Courier");
+  doc.setFontSize(15);
+  doc.text("SAVED NOTES!", 105, y, "center");
+  y += 20;
+  // loop through the saved notes
+  savedNotes.forEach(function (note, index) {
+    // check if y value is getting too large
+    if (y > 280) {
+      doc.addPage();
+      y = 20;
+    }
     doc.setFont("Courier");
-    doc.setFontSize(15);
-    doc.text("SAVED NOTES!", 105, y, 'center');
+    doc.setFontSize(16);
+    doc.text(`${index + 1}. `, 15, y);
+    doc.text(note.text, 30, y);
     y += 20;
-    // loop through the saved notes
-    savedNotes.forEach(function(note,index) {
-        doc.setFont("Courier");
-        doc.setFontSize(16);
-        doc.text(`${index+1}. `, 15, y);
-        doc.text(note.text, 30, y);
-        y += 20;
-        doc.line(15, y, 195, y);
-        y += 10;
-    });
-    doc.save("saved-notes.pdf");
+    if (note.timestamp) {
+      doc.setFontSize(10);
+      doc.text(note.timestamp, 15, y);
+      y += 20;
+      doc.line(15, y, 195, y);
+      y += 10;
+    } else {
+        doc.setFontSize(10);
+      doc.text("Showing Timestamp still Underdevelopment!", 15, y);
+      y += 20;
+    }
+    doc.line(15, y, 195, y);
+    y += 10;
+  });
+
+  doc.save("saved-notes.pdf");
 }
-
-
-
-
-
-
-
-
-
-
-
