@@ -160,7 +160,7 @@ font-size: 16px;
     }
     }
 
-    @media screen and (max-aspect-ratio: 375/812) {
+    @media screen and (max-aspect-ratio: 19.5/9) {
         /* Change container width to 100% on mobile */
         .container {
         width: 100%;
