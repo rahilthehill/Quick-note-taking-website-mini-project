@@ -160,3 +160,19 @@ function generatePDF() {
 
   doc.save("saved-notes.pdf");
 }
+  // Get the development button and overlay elements
+  const developmentBtn = document.getElementById("development-btn");
+  const developmentOverlay = document.getElementById("development-overlay");
+
+  // Add an event listener to the development button to toggle the overlay
+  developmentBtn.addEventListener("click", function() {
+    developmentOverlay.classList.toggle("show");
+  });
+
+  // Get the close button in the overlay
+  const closeOverlayBtn = document.getElementById("close-overlay-btn");
+
+  // Add an event listener to the close button to hide the overlay
+  closeOverlayBtn.addEventListener("click", function() {
+    developmentOverlay.classList.remove("show");
+  });

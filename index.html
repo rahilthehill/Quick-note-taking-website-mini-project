@@ -2,7 +2,6 @@
 
 <link rel="stylesheet" href="style.css">
 <html>
-
 <head>
     <title>Rahilj's Notetaking App!</title>
 </head>
@@ -11,14 +10,25 @@
     <div class="title" id="titleWeb">Quick Notes WebApp!
         <a href="https://github.com" target="_blank" class="github-button">Source Code</a>
       </div>
-      
-      
+    
     <div class="container">
         <textarea id="note-text"></textarea>
         <button onclick="saveNote()">Save</button>
         <button onclick="changeFont()" id="font-button"> Change Font: </button>
         <button onclick="generatePDF()">Export PDF</button>
+        <button id="development-btn">Development</button>
     </div>
+    <div id="development-overlay" class="overlay">
+        <div class="overlay-content">
+          <h2>ℹ️ About!</h2>
+          <p>➡️ This website is a quick mini-project made by Rahil! Insta: @therahilj</p>
+          <p>➡️ It was developed using HTML, CSS, and JavaScript with the purpose of improving my coding skills!</p>
+          <p>➡️ The PDF generation feature uses the jsPDF library.</p>
+          <p>➡️ Note that this website is still very rudimentary, and i'll be updating and treating it as a playground for features and such</p>
+          <p>➡️ Some stuff I want to include in the future are: Threejs/3D visuals, better PDF export, changing more features, more text editability, styling options, and a full login/cloud system!</p>
+          <button id="close-overlay-btn">Close</button>
+        </div>
+      </div>
     </div>
     <div class="saved-notes">
         <h2>Saved Notes:</h2>
