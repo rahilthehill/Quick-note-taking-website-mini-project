@@ -9,18 +9,22 @@
 
 
 <body>
+    
     <div class="title" id="titleWeb">Quick Notes WebApp!
         <a href="https://github.com" target="_blank" class="github-button">Source Code</a>
       </div>
+      
     
     <div class="container">
-        <textarea placeholder="Enter your note here..." id="note-text"></textarea>
+        <textarea  placeholder="Enter your note here..." id="note-text"></textarea>
         <div onclick="saveNote()" class="save">Save note!</div>
         <button onclick="changeFont()" id="font-button"> Toggle Fonts: </button>
         <button class="export-pdf" onclick="generatePDF()">⚠️ Export PDF</button>
         <button id="development-btn">Development</button>
         <button id="updates-btn">Toggle Updates</button>
         <button  class="warning-sort" onclick="reverseNotes()"> ⚠️ Toggle saved sort</button>
+        <button-special class="warning-sort-darkmode" id="dark-mode-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button-special>
+
     </div>
 
     <div id="development-overlay" class="overlay">
@@ -49,7 +53,7 @@
         </ul>
       </div>
     
-    <div class="saved-notes">
+    <div class="saved-notes" id="saved-notes">
         <h2>Saved Notes:</h2>
         <div id="saved"></div>
     </div>

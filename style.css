@@ -1,4 +1,4 @@
-/* Add some basic styling */
+Add some basic styling
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -27,7 +27,6 @@ textarea {
   margin: 10px;
 }
 
-/* Style the save button */
 button {
   background-color: #000;
   color: white;
@@ -43,6 +42,22 @@ button {
 button:hover {
   animation: save-animation 0.5s infinite alternate ease-in-out;
 }
+
+button-special {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: white;
+    padding: 6px;
+    border-radius: 301px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    font-size: 15px;
+  }
+  
+button-special:hover {
+    animation: save-animation 0.5s infinite alternate ease-in-out;
+  }
 
 /* Animation for the save button */
 @keyframes save-animation {
@@ -311,3 +326,54 @@ button.warning-sort::before {
     opacity: 0; /* Make the overlay transparent */
     transition: all 3s ease-in-out;
 }
+
+button-special.warning-sort-darkmode {
+    position: relative; /* add this to make the overlay appear on top of the button */
+}
+
+/* Show a warning overlay when the button is hovered */
+button-special.warning-sort-darkmode:hover::before {
+    content: "Not fully intergrated!"; /* Add warning message */
+    position: absolute; /* Position the overlay on top of the button */
+    top: 50%; /* Center it vertically */
+    left: 50%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Position the overlay at the center of the button */
+    background-color: rgba(255, 0, 0, 0.8); /* Use a semi-transparent red background */
+    color: white; /* Use white text */
+    padding: 10px; /* Add some padding */
+    border-radius: 10px; /* Add rounded corners */
+    font-size: 14px; /* Adjust the font size */
+    visibility: visible; /* Make the overlay visible */
+    opacity: 1; /* Make the overlay opaque */
+    transition: all 3s ease-in-out; /* Add a smooth transition */
+    width: 100px;
+}
+
+/* Hide the overlay when the button is not hovered */
+button-special.warning-sort-darkmode::before {
+    visibility: hidden; /* Make the overlay hidden */
+    opacity: 0; /* Make the overlay transparent */
+    transition: all 3s ease-in-out;
+}
+
+.dark-mode {
+    background-color: #000;
+    color: white;
+  }
+  
+  .dark-mode button {
+    background-color: rgb(255, 255, 255);
+    color: #000;
+  }  
+
+   
+  .dark-mode github-button {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+  }  
+
+  .dark-mode button-special{
+    background-color: rgb(255, 255, 255);
+    color: #000;
+  }
+  

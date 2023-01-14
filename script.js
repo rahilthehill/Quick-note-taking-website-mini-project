@@ -1,3 +1,7 @@
+const updateBack1 = document.getElementById("updates-section");
+const noteText = document.getElementById("note-text");
+const savedNotes1 = document.getElementById("saved-notes");
+
 // Initialize an array to store the saved notes
 let emojis = ["📝", "💭", "📓", "📄", "🗒"];
 let savedNotes = [];
@@ -73,6 +77,7 @@ function displayNotes() {
     // Create a new container for the saved note
     let noteContainer = document.createElement("div");
     noteContainer.classList.add("saved-note");
+    noteContainer.setAttribute("id", "saved-note");
     // Create an image element for the emoji
     let emoji = document.createElement("span");
     emoji.innerHTML = savedNotes[i].emoji;
@@ -257,4 +262,28 @@ document.getElementById("export-pdf-button").addEventListener("mouseover", funct
             }
         });
     });
+
+   
+
+
+   
+    const darkModeBtn = document.getElementById("dark-mode-btn");
     
+    
+darkModeBtn.addEventListener("click", toggleDarkMode);
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+  updateBack1.style.backgroundColor = "black";
+  updateBack1.style.color = "white";
+
+  noteText.style.backgroundColor = "black";
+  noteText.style.color = "white";
+
+  savedNotes1.style.backgroundColor = "black";
+  savedNotes1.style.color = "black";
+ 
+  
+  console.log("run");
+
+}
