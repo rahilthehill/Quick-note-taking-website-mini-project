@@ -159,3 +159,39 @@ font-size: 16px;
     background-color: white;
     }
     }
+
+    @media only screen and (max-width: 600px) {
+        /* Change container width to 100% on mobile */
+        .container {
+        width: 100%;
+        }
+        
+        /* Change text area width and height to 90% on mobile */
+        textarea {
+            width: 90%;
+            height: 90%;
+        }
+        
+        /* Reduce font size of saved note timestamp on mobile */
+        .saved-note .timestamp {
+            font-size: 10px;
+        }
+        
+        /* Reduce font size of title on mobile */
+        .title {
+            font-size: 3vh;
+        }
+        
+        /* Reduce font size of github button on mobile */
+        .github-button {
+            font-size: 1vh;
+        }
+        
+        }
+        
+        @media only screen and (max-width: 400px) {
+        /* Change emoji size on mobile */
+        .saved-note .emoji {
+        font-size: 150%;
+        }
+        }
